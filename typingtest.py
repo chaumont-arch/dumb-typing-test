@@ -9,8 +9,7 @@ time_limit = 60
 print_width = 50
 
 # https://www.geeksforgeeks.org/clear-screen-python/
-# define our clear function
-def clear():
+def clear_screen():
     if name == 'nt':
         _ = system('cls')
     else:
@@ -25,13 +24,13 @@ def test_user_on_character(goal_char):
     # and display wpm when its done
     
 def test_user_on_string(text):
-    clear()
+    clear_screen()
     for index in range(len(text)):
         final_index = min(len(text),index+print_width)
         print(text[index:final_index])
         goal_char = text[index]
         test_user_on_character(goal_char)
-        clear()
+        clear_screen()
     print("END OF STRING REACHED") #is there a way to kill the sleep?
         
 def run_function_with_timer(function,*args):  
@@ -42,7 +41,7 @@ def run_function_with_timer(function,*args):
     p.join()
         
 if __name__ == '__main__':
-    message = "That way, Python will recognise it as a tuple with a single element, as intended. Currently, Python is interpreting your code as just a string. However, it's failing in this particular way because a string is effectively list of characters."
+    message = "That way, Python will recognise it as a tuple with a single element, as intended. Currently, Python is interpreting your code as just a string. However, it's failing in this particular way because a string is effectively a list of characters."
     run_function_with_timer(test_user_on_string,message)
 
 #Plan:
@@ -51,3 +50,9 @@ if __name__ == '__main__':
 #display active 50 characters
 #option to get text from wikipedia
 #or just random words from common word dictionary
+
+#TODO:
+#fix flickering text
+#display stats
+#get text databases
+#have modes
