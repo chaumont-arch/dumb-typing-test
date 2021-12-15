@@ -7,28 +7,17 @@ from os import system, name
 time_limit = 60
 print_width = 50
 
-def old_chartest():
-    start_time = time.time()
-    input_char = ''
-    while (time.time() - start_time < time_limit) & (input_char.lower() != valid.lower()):
-        input_char = msvcrt.getch()
-    print('succ')
-    
 # https://www.geeksforgeeks.org/clear-screen-python/
 # define our clear function
 def clear():
-
-    # for windows
     if name == 'nt':
         _ = system('cls')
-
-    # for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')    
     
 def chartest(goal_char):
     input_char = ''
-    while input_char != goal_char: #.lower()
+    while input_char != goal_char:
         input_char = msvcrt.getch().decode()
     # and then return and reset timer, restart forcibly
     # make sure it all gets printed nice
