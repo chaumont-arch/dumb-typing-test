@@ -39,10 +39,40 @@ def run_function_with_timer(function,*args):
     time.sleep(time_limit) 
     p.terminate()  
     p.join()
+
+def create_word_list():
+    f = open("resources/1-1000.txt", "r")
+    textline = ""
+    for line in f:
+        textline += line.strip() + " "
+    f.close()
+    return textline
+
+def get_value(message):
+    value = ""
+    while not isinstance(value,int):
+        value = input(message)
+        try:
+            value = int(value)
+        except:
+            value = ""
+    return value
+
+def get_string():
+    print("1. Fixed string")
+    print("2. 1000 common words")
+    index = get_value("Input mode:")
+    #I know there's a better way to do this but I don't care.
+    if index == 1:
+        message = "That way, Python will recognise it as a tuple with a single element, as intended. Currently, Python is interpreting your code as just a string. However, it's failing in this particular way because a string is effectively a list of characters."
+    if index == 2:
+            message = create_word_list()
+    return message
         
 if __name__ == '__main__':
-    message = "That way, Python will recognise it as a tuple with a single element, as intended. Currently, Python is interpreting your code as just a string. However, it's failing in this particular way because a string is effectively a list of characters."
+    message = get_string()
     run_function_with_timer(test_user_on_string,message)
+
 
 #Plan:
 #3 strikes out
