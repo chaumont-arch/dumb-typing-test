@@ -3,6 +3,7 @@ import msvcrt
 import time
 import multiprocessing
 import random
+import wikipedia #sorry, i'm lazy
 from os import system, name
 
 #do something about the global variables - options file?
@@ -69,13 +70,22 @@ def get_value(message):
 def get_string():
     print("1. Fixed string")
     print("2. 1000 common words")
+    print("3. Wikipedia")
     index = get_value("Input mode:")
     #I know there's a better way to do this but I don't care.
     if index == 1:
         message = "That way, Python will recognise it as a tuple with a single element, as intended. Currently, Python is interpreting your code as just a string. However, it's failing in this particular way because a string is effectively a list of characters."
     if index == 2:
-            message = create_word_list()
+        message = create_word_list()
+    if index == 3:
+        message = get_wikipedia()
     return message
+
+def get_wikipedia():
+    raw_text = wikipedia.summary(wikipedia.random())
+    clean_text = raw_text.encode("ascii","ignore").decode("ascii") #bruh
+    return clean_text.replace("//","")
+
         
 if __name__ == '__main__':
     message = get_string()
@@ -92,5 +102,3 @@ if __name__ == '__main__':
 #TODO:
 #fix flickering text
 #display stats
-#get text databases
-#have modes
