@@ -2,6 +2,7 @@
 import msvcrt
 import time
 import multiprocessing
+import random
 from os import system, name
 
 #do something about the global variables - options file?
@@ -42,10 +43,17 @@ def run_function_with_timer(function,*args):
 
 def create_word_list():
     f = open("resources/1-1000.txt", "r")
-    textline = ""
+    wordlist = []
     for line in f:
-        textline += line.strip() + " "
+        wordlist.append(line.strip()+" ")
     f.close()
+    random.shuffle(wordlist)
+
+    #Once again, not a great way to do this
+    textline = ""
+    for word in wordlist:
+        textline += word
+
     return textline
 
 def get_value(message):
